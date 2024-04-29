@@ -37,22 +37,22 @@ function render(variables = {}) {
           <h2>${variables.role ? variables.role : "Your Role"}</h2>
           <h3>${variables.city ? variables.city : "City"},${variables.country ? variables.country : "Country"}</h3>
           <ul class="position-${variables.socialMediaPosition.endsWith("right") ? "right" : "left"}">
-            <li style="${variables.twitter ? "":"display:none;"}">
+            <li style="${variables.twitter ? "" : "display:none;"}">
               <a href="https://twitter.com/${variables.twitter}">
                 <i class="fab fa-twitter"></i>
               </a>
             </li>
-            <li style="${variables.github ? "":"display:none;"}">
+            <li style="${variables.github ? "" : "display:none;"}">
               <a href="https://github.com/${variables.github}">
                 <i class="fab fa-github"></i>
               </a>
             </li>
-            <li style="${variables.linkedin ? "":"display:none;"}">
+            <li style="${variables.linkedin ? "" : "display:none;"}">
               <a href="https://linkedin.com/school/${variables.linkedin}">
                 <i class="fab fa-linkedin"></i>
               </a>
             </li>
-            <li style="${variables.instagram ? "":"display:none;"}">
+            <li style="${variables.instagram ? "" : "display:none;"}">
               <a href="https://instagram.com/4${variables.instagram}">
                 <i class="fab fa-instagram"></i>
               </a>
@@ -65,7 +65,7 @@ function render(variables = {}) {
 /**
  * Don't change any of the lines below, here is where we do the logic for the dropdowns
  */
-window.onload = function() {
+window.onload = function () {
   window.variables = {
     // if includeCover is true the algorithm should show the cover image
     includeCover: true,
@@ -88,8 +88,8 @@ window.onload = function() {
   };
   render(window.variables); // render the card for the first time
 
-  document.querySelectorAll(".picker").forEach(function(elm) {
-    elm.addEventListener("change", function(e) {
+  document.querySelectorAll(".picker").forEach(function (elm) {
+    elm.addEventListener("change", function (e) {
       // <- add a listener to every input
       const attribute = e.target.getAttribute("for"); // when any input changes, collect the value
       let values = {};
@@ -97,10 +97,10 @@ window.onload = function() {
         this.value == "" || this.value == "null"
           ? null
           : this.value == "true"
-          ? true
-          : this.value == "false"
-          ? false
-          : this.value;
+            ? true
+            : this.value == "false"
+              ? false
+              : this.value;
       render(Object.assign(window.variables, values)); // render again the card with new values
     });
   });
